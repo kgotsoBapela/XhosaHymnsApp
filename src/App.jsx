@@ -493,6 +493,7 @@ function Reader({ hymn, hymns, fav, onFav, size, setSize, theme, setTheme, onRea
         <div className="hymn__head">
           <span className="hymn__num">{hymn.number}</span>
           <h2 className="hymn__title">{hymn.title}</h2>
+          {hymn.ref && <p className="hymn__ref">{hymn.ref}</p>}
           <span className="fleuron" aria-hidden="true">❦</span>
         </div>
 
@@ -506,7 +507,7 @@ function Reader({ hymn, hymns, fav, onFav, size, setSize, theme, setTheme, onRea
               <span className="stanza__mark">{s.type === "verse" ? s.n : t.chorus}</span>
               <p>
                 {s.lines.map((l, j) => (
-                  <span className="line" key={j}>
+                  <span className={"line" + (s.en?.includes(j) ? " line--en" : "")} key={j}>
                     {l}
                   </span>
                 ))}

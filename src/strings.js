@@ -22,7 +22,7 @@ export const t = {
   searchHelp: "Bhala inombolo yeculo, okanye amagama ovakalayo kulo.",
   searchNone: (q) => `Akukho culo linamagama athi “${q}”.`,
   savedEmpty: "Cofa iribhoni phezulu eculweni ukuze ulibeke apha.",
-  noHymns: "Akukabikho maculo. Faka iifayile ze-.pptx kwifolda ethi hymns, uze uphinde wakhe i-app.",
+  noHymns: "Akukabikho maculo. Faka iifayile ze-.pptx okanye ze-.ppt kwifolda ethi hymns, uze uphinde wakhe i-app.",
 
   back: "Buyela",
   save: "Gcina kwezithandwayo",

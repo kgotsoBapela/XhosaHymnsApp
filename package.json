@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
+    "cfb": "^1.2.2",
     "jszip": "3.10.1",
     "vite": "5.4.11"
   }

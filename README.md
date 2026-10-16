@@ -21,7 +21,7 @@ How a slide deck is read:
 | "1." or "2)" at the start of a verse | Removed (the app numbers verses itself) |
 
 If a file has no number, it's given the next free number, and duplicate numbers are renumbered with a warning in the build log.
-Old `.ppt` files aren't read. Open them in PowerPoint and use **Save As → .pptx**.
+Both `.pptx` and old PowerPoint 97–2003 `.ppt` files are read. A short letter prefix on the number is fine (`X068 Ngemini yeCawa.ppt` → hymn 68), and a heading line such as "XHOSA 68" at the top of the first slide is skipped. In bilingual hymns, English translation lines are shown in lighter italics.
 
 The two sample hymns in `hymns/` (Nkosi Sikelel' iAfrika, Ulo Thixo Omkhulu) are only there for testing. Delete them when you add your own.
 

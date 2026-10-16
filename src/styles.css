@@ -462,6 +462,9 @@ mark {
   line-height: 1.25;
   text-wrap: balance;
 }
+.hymn__ref { margin: 0.2em 0 0; font-size: 0.72em; font-style: italic; color: var(--ink-soft); }
+.line--en { font-style: italic; font-size: 0.84em; color: var(--ink-soft); margin-bottom: 0.15em; }
+.stanza--chorus .line--en { font-style: normal; }
 .fleuron { display: block; margin: 0.5em 0 1em; color: var(--rubric); font-size: 1.05em; }
 
 .stanza {
