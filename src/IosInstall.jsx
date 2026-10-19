@@ -13,7 +13,10 @@ export const isStandalone =
 // Browsers inside other apps (Facebook, Instagram…) can't add to the home screen
 const inAppBrowser = /FBAN|FBAV|Instagram|Line\/|Snapchat|TikTok|musical_ly|GSA\//.test(ua);
 
-export const showIosInstall = isIOS && !isStandalone;
+// Preview on any device by opening the site with ?ios-preview (e.g. to check the wording)
+const preview = typeof location !== "undefined" && /[?&]ios-preview\b/.test(location.search);
+
+export const showIosInstall = (isIOS && !isStandalone) || preview;
 
 const KEY = "amaculo:iosHintSeen";
 const seen = () => {
@@ -54,15 +57,15 @@ export function IosInstallSheet({ open, onClose }) {
   const [auto, setAuto] = useState(false);
 
   useEffect(() => {
-    if (!showIosInstall || seen()) return;
-    const id = setTimeout(() => setAuto(true), 4000);
+    if (!showIosInstall || (seen() && !preview)) return;
+    const id = setTimeout(() => setAuto(true), preview ? 600 : 4000);
     return () => clearTimeout(id);
   }, []);
 
   if (!showIosInstall || !(open || auto)) return null;
 
   const close = () => {
-    markSeen();
+    if (!preview) markSeen();
     setAuto(false);
     onClose?.();
   };
