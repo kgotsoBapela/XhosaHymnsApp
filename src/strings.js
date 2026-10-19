@@ -34,6 +34,19 @@ export const t = {
   night: "Ubusuku",
   close: "Vala",
   clear: "Sula",
+
+  // iPhone "Add to Home Screen" guide (shown on iPhone/iPad only)
+  iosCoverLink: "Faka iAmaculo efowunini yakho",
+  iosTitle: "Faka iAmaculo efowunini yakho",
+  iosLead: "Iza kuvela kwiskrini sakho njengeapp, kwaye isebenze nangaphandle kwe-intanethi.",
+  iosStep1: "Cofa iqhosha lokwabelana kuSafari.",
+  iosStep1Alt: "Ukuba awulibonanga, cofa kuqala",
+  iosStep2a: "Khetha",
+  iosStep2b: ".",
+  iosStep3a: "Cofa",
+  iosStep3b: " phezulu ngasekunene.",
+  iosInApp: "Vula le linki kuSafari kuqala, emva koko uyifake efowunini yakho.",
+  iosDone: "Ndiyaqonda",
   prev: "Iculo elingaphambili",
   next: "Iculo elilandelayo",
 };

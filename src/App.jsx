@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { t } from "./strings.js";
+import { IosInstallSheet, showIosInstall } from "./IosInstall.jsx";
 
 /* ---------- small helpers ---------- */
 
@@ -88,6 +89,7 @@ const Icon = {
 export default function App() {
   const route = useHashRoute();
   const [data, setData] = useState(null);
+  const [installOpen, setInstallOpen] = useState(false);
   const [error, setError] = useState(false);
   const [favs, setFavs] = usePersisted("favs", []);
   const [last, setLast] = usePersisted("last", null);
@@ -150,7 +152,7 @@ export default function App() {
     tab = "saved";
     screen = <SavedScreen hymns={favs.map((n) => byNumber.get(n)).filter(Boolean)} />;
   } else {
-    screen = <Cover hymns={hymns} byNumber={byNumber} last={last ? byNumber.get(last) : null} />;
+    screen = <Cover hymns={hymns} byNumber={byNumber} last={last ? byNumber.get(last) : null} onInstall={() => setInstallOpen(true)} />;
   }
 
   return (
@@ -160,6 +162,7 @@ export default function App() {
           {error ? <p className="empty">Could not load hymns.json</p> : screen}
         </div>
         <TabBar tab={tab} />
+        <IosInstallSheet open={installOpen} onClose={() => setInstallOpen(false)} />
       </div>
     </div>
   );
@@ -210,7 +213,7 @@ function Page({ title, sub, back, actions, children }) {
 
 /* ---------- cover / home ---------- */
 
-function Cover({ hymns, byNumber, last }) {
+function Cover({ hymns, byNumber, last, onInstall }) {
   const [num, setNum] = useState("");
   const [msg, setMsg] = useState("");
   const open = (e) => {
@@ -252,6 +255,11 @@ function Cover({ hymns, byNumber, last }) {
           </p>
         </form>
 
+        {showIosInstall && (
+          <button className="cover__install" onClick={onInstall}>
+            {t.iosCoverLink}
+          </button>
+        )}
         <p className="cover__brand">{t.appSub}</p>
       </div>
 

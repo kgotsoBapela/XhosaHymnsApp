@@ -41,6 +41,10 @@ npx vercel          # first time: log in and link the project
 npx vercel --prod   # publish
 ```
 
+## Installing on phones
+- **iPhone / iPad:** open the site in Safari, tap Share, then **Add to Home Screen**. The app opens full-screen with a leather launch screen, and works offline. iPhone users see a short guide for this once, and the cover has a link to show it again. (Code: `src/IosInstall.jsx`, launch screens in `public/splash/`.) None of this appears on Android.
+- **Android:** Chrome offers **Install app** / **Add to Home screen** from its menu, using `manifest.webmanifest`.
+
 ## Running locally
 ```bash
 npm install
