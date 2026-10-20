@@ -1,5 +1,5 @@
 // Offline support: app shell + hymns cached; hymns.json refreshed whenever online.
-const CACHE = "amaculo-v1";
+const CACHE = "amaculo-v2";
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["/", "/hymns.json", "/manifest.webmanifest", "/icon.svg"])));
   self.skipWaiting();
@@ -12,7 +12,8 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
-  const networkFirst = req.mode === "navigate" || url.pathname === "/hymns.json";
+  // Always try the network first for the page, the hymns and the manifest, so updates arrive
+  const networkFirst = req.mode === "navigate" || url.pathname === "/hymns.json" || url.pathname === "/manifest.webmanifest";
   if (networkFirst) {
     e.respondWith(
       fetch(req)

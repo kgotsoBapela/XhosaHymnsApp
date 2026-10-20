@@ -263,6 +263,40 @@ button { cursor: pointer; }
 }
 .cover__install:focus-visible { outline-color: var(--gilt-hi); }
 
+/* Android: one-tap install button on the cover */
+.cover__install--android {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--gilt-lo);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 16.5px;
+  color: var(--gilt-hi);
+  text-decoration: none;
+  background: #0000002e;
+}
+.cover__install--android svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.cover__install--android:active { background: #00000055; }
+
+.install-cta {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin: 4px 0 10px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--leather-lo);
+  background: linear-gradient(175deg, #f3dc95, #c9a24a 55%, #a07c34);
+  box-shadow: inset 0 1px 0 #fff8, 0 2px 0 #0004;
+}
+.ios-install__icon.android-install__icon { border-radius: 50%; }
+.android-install__glyph { color: var(--ink); }
+.android-install__glyph svg circle { fill: currentColor; stroke: none; }
+
 /* iPhone "Add to Home Screen" guide */
 .ios-install { text-align: center; }
 .ios-install__icon { display: block; margin: 4px auto 10px; border-radius: 14px; box-shadow: 0 2px 8px #0004; }

@@ -43,7 +43,8 @@ npx vercel --prod   # publish
 
 ## Installing on phones
 - **iPhone / iPad:** open the site in Safari, tap Share, then **Add to Home Screen**. The app opens full-screen with a leather launch screen, and works offline. iPhone users see a short guide for this once, and the cover has a link to show it again. (Code: `src/IosInstall.jsx`, launch screens in `public/splash/`.) None of this appears on Android.
-- **Android:** Chrome offers **Install app** / **Add to Home screen** from its menu, using `manifest.webmanifest`.
+- **Android:** Chrome, Samsung Internet and Edge users get an **install button** on the cover and a one-time prompt. One tap opens Android's own install dialog (with screenshots and a description from `manifest.webmanifest`). Other browsers get short steps (⋮ → Install app). Once installed, long-pressing the Amaculo icon offers shortcuts: continue reading, search, all hymns, favourites. (Code: `src/AndroidInstall.jsx`.) None of this appears on iPhone.
+- **Preview either prompt on any device:** add `?ios-preview` or `?android-preview` to the address.
 
 ## Running locally
 ```bash

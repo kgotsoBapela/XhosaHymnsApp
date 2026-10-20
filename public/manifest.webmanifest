@@ -1,14 +1,52 @@
 {
+  "id": "/",
   "name": "XhosaHymns — Amaculo",
   "short_name": "Amaculo",
+  "description": "Amaculo esiXhosa: Xhosa hymns to read on your phone, in church or at home. Works offline.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#2a1b14",
   "theme_color": "#2a1b14",
   "lang": "xh",
+  "dir": "ltr",
+  "categories": ["books", "lifestyle"],
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Qhubeka ufunda",
+      "short_name": "Qhubeka",
+      "description": "Vula iculo obulifunda ekugqibeleni",
+      "url": "/?continue",
+      "icons": [{ "src": "/shortcuts/continue.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Khangela iculo",
+      "short_name": "Khangela",
+      "url": "/#/khangela",
+      "icons": [{ "src": "/shortcuts/search.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Amaculo onke",
+      "short_name": "Amaculo",
+      "url": "/#/amaculo",
+      "icons": [{ "src": "/shortcuts/list.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Ezithandwayo",
+      "short_name": "Ezithandwayo",
+      "url": "/#/ezithandwayo",
+      "icons": [{ "src": "/shortcuts/saved.png", "sizes": "96x96", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [
+    { "src": "/screenshots/cover.webp", "sizes": "780x1688", "type": "image/webp", "form_factor": "narrow", "label": "Ikhaya: vula iculo ngenombolo" },
+    { "src": "/screenshots/hymn.webp", "sizes": "780x1688", "type": "image/webp", "form_factor": "narrow", "label": "Funda iculo" },
+    { "src": "/screenshots/list.webp", "sizes": "780x1688", "type": "image/webp", "form_factor": "narrow", "label": "Uluhlu lwamaculo onke" }
   ]
 }

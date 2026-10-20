@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { t } from "./strings.js";
 import { IosInstallSheet, showIosInstall } from "./IosInstall.jsx";
+import { AndroidInstallSheet, useAndroidInstall } from "./AndroidInstall.jsx";
 
 /* ---------- small helpers ---------- */
 
@@ -90,6 +91,7 @@ export default function App() {
   const route = useHashRoute();
   const [data, setData] = useState(null);
   const [installOpen, setInstallOpen] = useState(false);
+  const [androidOpen, setAndroidOpen] = useState(false);
   const [error, setError] = useState(false);
   const [favs, setFavs] = usePersisted("favs", []);
   const [last, setLast] = usePersisted("last", null);
@@ -113,6 +115,14 @@ export default function App() {
 
   const hymns = data?.hymns ?? [];
   const byNumber = useMemo(() => new Map(hymns.map((h) => [h.number, h])), [hymns]);
+
+  // "Continue reading" home-screen shortcut (Android long-press menu) opens /?continue
+  useEffect(() => {
+    if (!data || !/[?&]continue\b/.test(location.search)) return;
+    const target = last && byNumber.has(last) ? "#/iculo/" + last : "#/";
+    history.replaceState(null, "", "/" + target);
+    dispatchEvent(new HashChangeEvent("hashchange"));
+  }, [data]);
 
   const toggleFav = (n) => setFavs((f) => (f.includes(n) ? f.filter((x) => x !== n) : [...f, n].sort((a, b) => a - b)));
 
@@ -152,7 +162,7 @@ export default function App() {
     tab = "saved";
     screen = <SavedScreen hymns={favs.map((n) => byNumber.get(n)).filter(Boolean)} />;
   } else {
-    screen = <Cover hymns={hymns} byNumber={byNumber} last={last ? byNumber.get(last) : null} onInstall={() => setInstallOpen(true)} />;
+    screen = <Cover hymns={hymns} byNumber={byNumber} last={last ? byNumber.get(last) : null} onInstall={() => setInstallOpen(true)} onAndroidHelp={() => setAndroidOpen(true)} />;
   }
 
   return (
@@ -163,6 +173,7 @@ export default function App() {
         </div>
         <TabBar tab={tab} />
         <IosInstallSheet open={installOpen} onClose={() => setInstallOpen(false)} />
+        <AndroidInstallSheet open={androidOpen} onClose={() => setAndroidOpen(false)} />
       </div>
     </div>
   );
@@ -213,7 +224,8 @@ function Page({ title, sub, back, actions, children }) {
 
 /* ---------- cover / home ---------- */
 
-function Cover({ hymns, byNumber, last, onInstall }) {
+function Cover({ hymns, byNumber, last, onInstall, onAndroidHelp }) {
+  const android = useAndroidInstall();
   const [num, setNum] = useState("");
   const [msg, setMsg] = useState("");
   const open = (e) => {
@@ -255,6 +267,17 @@ function Cover({ hymns, byNumber, last, onInstall }) {
           </p>
         </form>
 
+        {android.show && (
+          <button
+            className="cover__install cover__install--android"
+            onClick={() => (android.canPrompt ? android.install() : onAndroidHelp())}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" />
+            </svg>
+            {t.androidCover}
+          </button>
+        )}
         {showIosInstall && (
           <button className="cover__install" onClick={onInstall}>
             {t.iosCoverLink}

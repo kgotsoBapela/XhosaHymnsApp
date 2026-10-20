@@ -47,6 +47,20 @@ export const t = {
   iosStep3b: " phezulu ngasekunene.",
   iosInApp: "Vula le linki kuSafari kuqala, emva koko uyifake efowunini yakho.",
   iosDone: "Ndiyaqonda",
+
+  // Android install (shown on Android only)
+  androidCover: "Faka iAmaculo efowunini yakho",
+  androidTitle: "Faka iAmaculo efowunini yakho",
+  androidLead: "Iza kuvela kwiskrini sakho njengeapp, kwaye isebenze nangaphandle kwe-intanethi.",
+  androidInstall: "Faka",
+  androidLater: "Hayi okwangoku",
+  androidStep1: "Cofa u-⋮ phezulu ngasekunene kwiChrome.",
+  androidStep2a: "Khetha",
+  androidStep2or: "okanye",
+  androidStep2b: ".",
+  androidStep3a: "Cofa",
+  androidStep3b: " ukuze uqinisekise.",
+  androidInApp: "Vula le linki kuChrome kuqala, emva koko uyifake efowunini yakho.",
   prev: "Iculo elingaphambili",
   next: "Iculo elilandelayo",
 };
